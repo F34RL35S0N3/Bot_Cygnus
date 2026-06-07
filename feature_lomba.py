@@ -300,14 +300,25 @@ Packer.toBuffer(doc).then(buf => {{
         f.write(js)
         js_path = f.name
     try:
-    env = os.environ.copy()
-    env["NODE_PATH"] = "/app/node_modules"
-        r = subprocess.run(["node", js_path],capture_output=True,text=True,timeout=30,cwd="/app",env=env)
+        env = os.environ.copy()
+        env["NODE_PATH"] = "/app/node_modules"
+
+        r = subprocess.run(
+            ["node", js_path],
+            capture_output=True,
+            text=True,
+            timeout=30,
+            cwd="/app",
+            env=env
+        )
+
         if r.returncode != 0:
             raise RuntimeError(r.stderr[:500])
+
         return output_path
+
     finally:
-        os.unlink(js_path)
+        os.unlink(js_path))
 
 
 # ─── TELEGRAM HANDLERS ────────────────────────────────────────────────────────
