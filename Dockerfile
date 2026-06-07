@@ -4,7 +4,10 @@ WORKDIR /app
  
 # Install Node.js (untuk generate .docx)
 RUN apt-get update && apt-get install -y nodejs npm && rm -rf /var/lib/apt/lists/*
-RUN npm install -g docx
+RUN mkdir /app/node_modules
+WORKDIR /app
+RUN npm init -y
+RUN npm install docx
  
 # Install Python dependencies
 COPY requirements.txt .
