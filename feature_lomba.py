@@ -318,7 +318,7 @@ Packer.toBuffer(doc).then(buf => {{
         return output_path
 
     finally:
-        os.unlink(js_path))
+        os.unlink(js_path)
 
 
 # ─── TELEGRAM HANDLERS ────────────────────────────────────────────────────────
